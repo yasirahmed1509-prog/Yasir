@@ -159,9 +159,9 @@ export default function Game() {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-v-pink-light font-sans" ref={containerRef}>
+    <div className="relative w-full h-screen overflow-hidden bg-pink-50 font-sans" ref={containerRef}>
       {/* Background Decor */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_50%_50%,_#FF85A1_1px,_transparent_1px)] bg-[length:40px_40px]" />
+      <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_50%_50%,_#ff69b4_1px,_transparent_1px)] bg-[length:40px_40px]" />
 
       <Stage 
         width={dimensions.width} 
@@ -176,13 +176,11 @@ export default function Game() {
             <Rect
               width={PLAYER_SIZE}
               height={PLAYER_SIZE}
-              fill="#FF4D6D"
+              fill="#FF69B4"
               cornerRadius={20}
               shadowColor="rgba(0,0,0,0.2)"
               shadowBlur={10}
               shadowOffset={{ x: 0, y: 5 }}
-              stroke="#590D22"
-              strokeWidth={2}
             />
             {/* Glossy highlight */}
             <Rect
@@ -216,18 +214,18 @@ export default function Game() {
               {item.type === 'strawberry' ? (
                 <Group>
                    {/* Strawberry Body */}
-                   <Circle radius={ITEM_SIZE/2} fill="#FF4D6D" scaleY={1.1} stroke="#590D22" strokeWidth={1} />
+                   <Circle radius={ITEM_SIZE/2} fill="#FF0000" scaleY={1.1} />
                    {/* Seeds */}
                    <Circle x={-5} y={-5} radius={1.5} fill="#FFF" opacity={0.5} />
                    <Circle x={5} y={0} radius={1.5} fill="#FFF" opacity={0.5} />
                    <Circle x={-2} y={5} radius={1.5} fill="#FFF" opacity={0.5} />
                    {/* Leaf */}
-                   <Rect x={-4} y={-ITEM_SIZE/2 - 5} width={8} height={8} fill="#70E000" cornerRadius={2} rotation={45} stroke="#590D22" strokeWidth={0.5} />
+                   <Rect x={-4} y={-ITEM_SIZE/2 - 5} width={8} height={8} fill="#228B22" cornerRadius={2} rotation={45} />
                 </Group>
               ) : (
                 <Group>
                   {/* Lemon Body */}
-                  <Circle radius={ITEM_SIZE/2} fill="#FFD60A" scaleY={0.8} rotation={-15} stroke="#590D22" strokeWidth={1} />
+                  <Circle radius={ITEM_SIZE/2} fill="#FFD700" scaleY={0.8} rotation={-15} />
                   {/* Sour Expression */}
                   <Circle x={-5} y={-5} radius={2} fill="#000" />
                   <Circle x={5} y={-5} radius={2} fill="#000" />
@@ -243,17 +241,17 @@ export default function Game() {
       {/* UI Overlay */}
       <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-start pointer-events-none">
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl border-2 border-v-pink-medium shadow-[0_4px_0_var(--v-pink-medium)]">
-            <Trophy className="text-v-yellow" fill="currentColor" />
-            <span className="text-2xl font-black text-v-text">{gameState.score}</span>
+          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-2xl shadow-lg">
+            <Trophy className="text-yellow-500" />
+            <span className="text-2xl font-bold">{gameState.score}</span>
           </div>
-          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-2xl border-2 border-v-pink-medium shadow-[0_4px_0_var(--v-pink-medium)]">
-            <Heart className="text-v-red fill-v-red" />
+          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-2xl shadow-lg">
+            <Heart className="text-red-500 fill-red-500" />
             <div className="flex gap-1">
               {[...Array(3)].map((_, i) => (
                 <div 
                   key={i} 
-                  className={`w-4 h-4 rounded-full ${i < gameState.lives ? 'bg-v-red border border-v-text/20' : 'bg-v-pink-light border border-v-pink-medium'}`} 
+                  className={`w-4 h-4 rounded-full ${i < gameState.lives ? 'bg-red-500' : 'bg-gray-300'}`} 
                 />
               ))}
             </div>
@@ -261,10 +259,10 @@ export default function Game() {
         </div>
 
         <div className="text-right pointer-events-auto">
-           <h1 className="text-3xl font-black text-v-red drop-shadow-sm uppercase tracking-tighter">
+           <h1 className="text-3xl font-black text-pink-600 drop-shadow-sm uppercase tracking-wider">
              Strawberry Jelly
            </h1>
-           <p className="text-v-pink-medium font-bold italic">Garden Adventure</p>
+           <p className="text-pink-400 font-medium italic">Garden Adventure</p>
         </div>
       </div>
 
@@ -275,21 +273,21 @@ export default function Game() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-v-pink-medium/50 backdrop-blur-sm flex items-center justify-center p-6 z-50"
+            className="absolute inset-0 bg-pink-500/40 backdrop-blur-md flex items-center justify-center p-6 z-50"
           >
             <motion.div 
               initial={{ scale: 0.8, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              className="vibrant-card p-12 text-center max-w-md w-full"
+              className="bg-white p-12 rounded-[2rem] shadow-2xl text-center max-w-md w-full border-8 border-pink-200"
             >
-              <div className="w-32 h-32 bg-v-pink-light rounded-full flex items-center justify-center mx-auto mb-6 border-4 border-v-pink-medium">
-                <div className="w-20 h-20 bg-v-red rounded-2xl animate-jiggle border-2 border-v-text/20 shadow-lg" />
+              <div className="w-32 h-32 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-20 h-20 bg-pink-500 rounded-2xl animate-jiggle" />
               </div>
-              <h2 className="text-4xl font-black text-v-red mb-2 uppercase tracking-tighter">Welcome!</h2>
-              <p className="text-v-text mb-8 font-bold">Catch the sweet strawberries, but watch out for the sour lemons!</p>
+              <h2 className="text-4xl font-black text-pink-600 mb-2">Welcome!</h2>
+              <p className="text-pink-400 mb-8 font-medium">Catch the sweet strawberries, but watch out for the sour lemons!</p>
               <button 
                 onClick={startGame}
-                className="vibrant-button w-full text-2xl flex items-center justify-center gap-3"
+                className="w-full bg-pink-600 hover:bg-pink-700 text-white font-black py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-2xl flex items-center justify-center gap-3 active:scale-95"
               >
                 <Play fill="currentColor" /> Play Now
               </button>
@@ -302,20 +300,20 @@ export default function Game() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="absolute inset-0 bg-v-text/60 backdrop-blur-sm flex items-center justify-center p-6 z-50 text-white"
+            className="absolute inset-0 bg-red-900/60 backdrop-blur-md flex items-center justify-center p-6 z-50 text-white"
           >
             <motion.div 
               initial={{ scale: 0.8, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              className="vibrant-card p-12 text-center max-w-md w-full text-v-text"
+              className="bg-white p-12 rounded-[2rem] shadow-2xl text-center max-w-md w-full border-8 border-red-100 text-slate-800"
             >
               <div className="text-6xl mb-6">🍓</div>
-              <h2 className="text-4xl font-black text-v-red mb-2 uppercase tracking-tighter">Game Over!</h2>
-              <p className="text-v-text mb-8 font-bold">You collected {gameState.score} strawberries!</p>
-              <div className="flex flex-col gap-4 text-v-white">
+              <h2 className="text-4xl font-black text-red-600 mb-2">Game Over!</h2>
+              <p className="text-slate-500 mb-8 font-medium">You collected {gameState.score} strawberries!</p>
+              <div className="flex flex-col gap-4">
                 <button 
                   onClick={startGame}
-                  className="vibrant-button w-full text-xl flex items-center justify-center gap-3"
+                  className="w-full bg-pink-600 hover:bg-pink-700 text-white font-black py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-xl flex items-center justify-center gap-3 active:scale-95"
                 >
                   <RefreshCw /> Try Again
                 </button>
@@ -326,7 +324,7 @@ export default function Game() {
       </AnimatePresence>
       
       {/* Help corner */}
-      <div className="absolute bottom-6 left-6 text-v-pink-medium font-black text-sm pointer-events-none opacity-50 uppercase tracking-widest">
+      <div className="absolute bottom-6 left-6 text-pink-300 font-bold text-sm pointer-events-none opacity-50 uppercase tracking-widest">
         Move Mouse or Drag to Play
       </div>
     </div>

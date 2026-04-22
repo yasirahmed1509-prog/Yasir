@@ -1,27 +1,12 @@
-:root {
-  --v-red: #FF4D6D;
-  --v-pink-light: #FFEBF0;
-  --v-pink-medium: #FF85A1;
-  --v-green: #70E000;
-  --v-yellow: #FFD60A;
-  --v-white: #FFFFFF;
-  --v-text: #590D22;
-}
-
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --color-v-red: var(--v-red);
-  --color-v-pink-light: var(--v-pink-light);
-  --color-v-pink-medium: var(--v-pink-medium);
-  --color-v-green: var(--v-green);
-  --color-v-yellow: var(--v-yellow);
-  --color-v-text: var(--v-text);
+  --font-sans: "Fredoka", ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  @apply bg-v-pink-light text-v-text overflow-hidden font-sans uppercase tracking-tight;
+  @apply bg-pink-50 text-pink-900 overflow-hidden;
 }
 
 @keyframes jiggle {
@@ -31,13 +16,5 @@ body {
 
 .animate-jiggle {
   animation: jiggle 0.6s ease-in-out infinite;
-}
-
-.vibrant-card {
-  @apply bg-white border-[6px] border-v-pink-medium rounded-[40px] shadow-[0_12px_0_var(--v-pink-medium)];
-}
-
-.vibrant-button {
-  @apply bg-v-red text-white py-4 px-8 rounded-[30px] font-black border-b-[4px] border-[#C9184A] active:border-b-0 active:translate-y-[4px] transition-all;
 }
 
